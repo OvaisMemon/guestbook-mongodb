@@ -1,0 +1,20 @@
+<% include header %>
+<h2>Write a new entry!</h2>
+
+<form method="POST" role="form">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Enter Title" required/>
+    </div>
+
+    <div class="form-group">
+        <label for="content">Entry Text</label>
+        <textarea class="form-control" id="message" name="message" placeholder="Example of Express JS using Mongo DB" rows="2" required></textarea>
+    </div>
+
+    <div class="form-group">        
+        <input type="submit" class="btn btn-primary" value="Post Entry"/>
+    </div>
+</form>
+
+<% include footer %>
