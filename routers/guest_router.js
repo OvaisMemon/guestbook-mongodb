@@ -1,5 +1,4 @@
 const express = require("express");
-const bodyparser = require("body-parser");
 const mongoose = require("mongoose");
 
 var api = express.Router();
@@ -10,15 +9,21 @@ require("../models/guests");
 const guests = mongoose.model("guests");
 
 api.get("/", (req, res) => {
-    
-    res.render("index", { entries = guests.json });
+    guests.find(function(err, db){
+        if(err){
+            console.log("Error retrieving entries.")
+            return;
+        }
+                
+        res.render("index", { entries : db });
+    });    
 });
 
 api.get("/new-entry", (req, res) => {
     res.render("new-entry");
 });
 
-api.post("/new-entry", (req, res) => {
+api.post("/new-entry", (request, response) => {
     if(!request.body.title || !request.body.message){
         response.status(400).send("Message and Title should have some value and cannot be null.");
         
@@ -26,19 +31,19 @@ api.post("/new-entry", (req, res) => {
     }
 
     var newEntry = {
-        title: req.body.title,
-        message: req.body.message
+        title: request.body.title,
+        message: request.body.message
     };
 
     new guests(newEntry)
     .save()
-    .then(s=> {
-        response.status(200).send("Guest book entry saved..");
-        res.redirect("/");
+    .then(s=> {     
+        console.log("Guest book entry saved.");   
+        response.redirect("/guests");
     })
     .catch(err => {
         console.log(err);
-        res.redirect("403");
+        response.render("403");
     });
 });
 

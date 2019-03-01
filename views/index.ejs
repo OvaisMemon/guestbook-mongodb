@@ -1,4 +1,5 @@
 <% include header %>
+
 <% if (entries.length) { %>
     <% entries.forEach(function(entry) { %>
         <div class="panel panel-default">
@@ -9,11 +10,11 @@
                 <%= entry.title %>
             </div>
             <div class="panel-body">
-                <%= entry.body%>
+                <%= entry.message%>
             </div>
         </div>
     <% }) %>
 <% } else { %>
-    No entries! <a href="/new-entry">Add One!</a>
+    No entries! <a href="/guests/new-entry">Add One!</a>
 <% } %>
 <% include footer %>
