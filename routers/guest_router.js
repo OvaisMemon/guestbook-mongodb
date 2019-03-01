@@ -10,7 +10,8 @@ require("../models/guests");
 const guests = mongoose.model("guests");
 
 api.get("/", (req, res) => {
-    res.render("index");
+    
+    res.render("index", { entries = guests.json });
 });
 
 api.get("/new-entry", (req, res) => {
