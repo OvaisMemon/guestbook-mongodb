@@ -9,7 +9,7 @@ app.use(bodyparser.urlencoded({ extended:false }));
 app.use(express.json());
 
 
-mongoose.connect("mongodb+srv://ovais-wagla:ovais-wagla@owagla-cswoa.mongodb.net/ovaisdb?retryWrites=true",{ useNewUrlParser: true })
+mongoose.connect("mongodb+srv://ovais-wagla:ovais-wagla@owagla-cswoa.mongodb.net/test?retryWrites=true",{ useNewUrlParser: true })
 .then(s=> 
     { 
         console.log("DB Connected.");
