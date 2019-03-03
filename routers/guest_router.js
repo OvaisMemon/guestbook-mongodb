@@ -14,7 +14,7 @@ api.get("/", (req, res) => {
             console.log("Error retrieving entries.")
             return;
         }
-                
+        
         res.render("index", { entries : db });
     });    
 });
