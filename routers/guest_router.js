@@ -14,7 +14,7 @@ api.get("/", (req, res) => {
             console.log("Error retrieving entries.")
             return;
         }
-        
+
         res.render("index", { entries : db });
     });    
 });
@@ -45,14 +45,6 @@ api.post("/new-entry", (request, response) => {
         console.log(err);
         response.render("403");
     });
-});
-
-api.put("/update", (req, res) => {
-    res.send("Update");
-});
-
-api.delete("/delete", (req, res) => {
-    res.send("Delete.");
 });
 
 module.exports = api;
